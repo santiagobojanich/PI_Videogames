@@ -1,5 +1,8 @@
 const { Router } = require('express');
-const axios = require ('axios')
+const axios = require ('axios');
+const {Videogame} = require ('../db')
+
+
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -8,16 +11,37 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get('/', async function (req,res){
- try{
-    let showall = await allGames()
-     res.send(showall)
-    }
-catch(e){
-    res.status(400).send('que paso')
-}
-}); 
+// router.get('/', async function (req,res){
+//  try{
+//     let showall = await allGames()
+//      res.send(showall)
+//     }
+//     catch(e){
+//         res.status(400).send('que paso')
+//     }
+// }); 
 
+router.get('/', async function (req,res){
+  try{  let name = req.query.name
+    let games = await allGames()
+    if(name){
+      let result =  games.filter(game=> game.name.toLowerCase().includes(name.toLowerCase())) //contains deprecado para strings
+      if(result.length >15){
+        let newResult =  result.slice(0,15)
+       return res.send(newResult)  
+    }
+      if(result.length > 0) {
+          res.send(result)
+      } else{
+          res.status(400).send('no hubo resultados')
+      } 
+    } else{
+        res.send(games)
+    }
+}
+catch(e){
+    res.status(404).send(e)
+}})
 
 
 async function allGames (){
@@ -41,5 +65,20 @@ async function allGames (){
 } 
 
 
+ 
+    
+  
+router.post('/', async function (req,res){
+   const {name,description,released,rating,plataforms} = req.body
+   
+   let post = await Videogame.create({
+       name: name,
+       description: description,
+       released:released,
+       rating: rating,
+       plataforms: plataforms, 
+   });
+   res.send(`${name} ha sido agregado con exito`,)
+})
 
 module.exports = router;
