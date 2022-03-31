@@ -1,6 +1,8 @@
 const { Router } = require('express');
 const axios = require ('axios');
-const {Videogame} = require ('../db')
+const {Videogame,Gender} = require ('../db');
+
+
 
 
 // Importar todos los routers;
@@ -23,7 +25,7 @@ const router = Router();
 
 router.get('/', async function (req,res){
   try{  let name = req.query.name
-    let games = await allGames()
+    let games = await DBxAPIGames()
     if(name){
       let result =  games.filter(game=> game.name.toLowerCase().includes(name.toLowerCase())) //contains deprecado para strings
       if(result.length >15){
@@ -54,31 +56,82 @@ async function allGames (){
    
    DefAllGames = DefAllGames.map(el=> el.data.results)
    DefAllGames = [...DefAllGames[0], ...DefAllGames[1],...DefAllGames[2],...DefAllGames[3],...DefAllGames[4]]
-   let games =  DefAllGames.map((el) => {
+   let games =  DefAllGames.map((game) => {
        return {
-           name: el.name,
-           image:el.background_image,
-           genres: el.genres,
+           name:  game.name,
+           image: game.background_image,
+           genres: game.genres,
            
         }})
         return games
 } 
 
+async function gamesFromDB (){
+  let allDB = await Videogame.findAll({
+      include:{
+          model: Gender,
+          attributes:['name'],
+          throug: {
+              attributes: [],
+          }
+        }
+  })
+   let DefAllDB = allDB.map((game) => {
+     return{
+         name: game.name ,
+         image: game.image,
+         genres: game.Genders.map(gen => gen.name), 
+     }
+   })
+  console.log(allDB)
+  return DefAllDB
+}
 
- 
+async function DBxAPIGames(){
+  let api = await allGames()
+  let db =  await  gamesFromDB()  
+  let total = api.concat(db)
+  return total
+}
     
-  
+router.get('/genres', async function (req,res){
+    let genresA = await allGames()
+    let genresDb = genresA.map(game => game.genres)
+    let DefGenres = genresDb.map (Agenres =>{
+        for(let i = 0;i<Agenres.length; i++){
+            return Agenres[i].name
+        }
+      })
+  let def = Array.from(new Set(DefGenres))  
+   console.log(def) 
+   def.forEach( async genre => {
+        await Gender.findOrCreate({
+          where: {name: genre.toLowerCase().charAt(0).toUpperCase() + genre.slice(1)}
+        })
+    })   
+    console.log(def)
+    let showGenres = await Gender.findAll()
+    res.send(showGenres)
+})
+
+let id = 750000
 router.post('/', async function (req,res){
-   const {name,description,released,rating,plataforms} = req.body
-   
+   const {name,description,released,rating,plataforms,image,genres} = req.body
    let post = await Videogame.create({
+       id: id ,
        name: name,
        description: description,
        released:released,
        rating: rating,
        plataforms: plataforms, 
-   });
-   res.send(`${name} ha sido agregado con exito`,)
-})
+       image: image,
+      });
+      id = id + 1
+      let GendersDisp = await Gender.findAll({
+        where: {name: genres}
+      })
+      post.addGender(GendersDisp) 
+      res.send(`${name} ha sido agregado con exito`,)
+    })
 
 module.exports = router;
