@@ -1,7 +1,8 @@
 const Router  = require('express');
 const axios = require ('axios');
 const {Videogame,Gender} = require ('../db');
-const functions = require ('./funciones')
+const functions = require ('./funciones');
+const { API } = require('./funciones');
  
 
 
@@ -28,13 +29,27 @@ router.get('/', async function (req,res){
     let name = req.query.name
     let games = await functions.ALL()
     if(name){
-      let result =  games.filter(game=> game.name.toLowerCase().includes(name.toLowerCase())) //contains deprecado para strings
-      if(result.length >15){
-        let newResult =  result.slice(0,15)
+      let api = await axios.get(`https://api.rawg.io/api/games?key=02338d92bdba49b4ad4d652a4a4d842e&search=${name}`)
+      api = api.data.results
+      let result=  api.map(game=> {
+        return {
+          name: game.name,
+          image: game.background_image,
+          genres: game.genres.map(gen => gen.name)
+        }
+        
+      }) 
+      let db = await functions.DB()
+      let result2 = db.filter(game => game.name.toLowerCase().includes(name.toLowerCase()))
+      
+      let result3 = result2.concat(result)
+      
+      if(result3.length >15){
+        let newResult =  result3.slice(0,15)
         return res.send(newResult)  
       }
-      if(result.length > 0) {
-        res.send(result)
+      if(result3.length > 0) {
+        res.send(result3)
       } else{
         res.status(400).send('no hubo resultados')
       } 
