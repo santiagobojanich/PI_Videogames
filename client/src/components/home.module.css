@@ -1,0 +1,63 @@
+/* .card{
+    display: flex;     
+
+    flex-direction: column;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    background: linear-gradient(#af067d, #69ff6b) 80%;
+}
+
+.cards{
+    display: flex;     
+    flex-direction:row;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    background-color: black;    
+}
+
+.buts{
+    display: flex;
+    height: 2vh;
+} */
+
+.container{
+    width: 20%;
+    display:flex;
+    align-items: center;
+    max-width: 1110px;
+}
+
+.card{
+    width: 100%;
+    margin: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    /* background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(0,0,255,0) 70.71%); */
+    background-image: url(https://priscilamarquezblog.files.wordpress.com/2017/11/g1.gif);
+            box-shadow: 0px 1px 10px rgba(0,0,0,0.9)
+}
+
+.card img{
+    width: 95%;
+   border: inset 5px; 
+   border-radius: 150px;
+   border-color: green ;
+}
+
+.card h2{
+     color: white;
+     text-shadow: 4px 4px 80px rgb(62, 249, 62), 4px 4px 10px rgb(24, 251, 69);
+    }
+.card ul{
+    color: white;
+    text-shadow: 4px 4px 80px rgb(62, 249, 62), 4px 4px 10px rgb(26, 245, 18);
+}
+
+.back{
+    background:linear-gradient(0.25turn,rgb(0, 25, 3),rgb(1, 40, 5),rgb(0, 11, 1));
+    display: flex;
+    flex-wrap: wrap;
+}
+

@@ -1,0 +1,46 @@
+
+
+
+
+A{
+    text-decoration: none;
+  }
+
+  .link{  
+    font-size: 160px;
+    color: white;
+    text-shadow: 4px 4px 80px rgb(195, 2, 195) , 4px 4px 10px rgb(0, 217, 255), 4px 4px 30px rgb(171, 255, 75); 
+    /* display: flex; 
+    align-items: flex-end;
+    justify-content: center; */
+    display:flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0%;
+    padding: 0%;
+    transition: text-shadow 2s; 
+    transition: font-size 1.1s;
+    height: 35vh;
+    }
+    .link:hover{
+       font-size: 170px;
+       text-shadow: 4px 4px 80px rgb(62, 249, 62), 4px 4px 10px rgb(0, 217, 255);
+    }
+
+    .title{  
+        font-size: 170px;
+        color: white;
+        text-shadow: 4px 4px 80px rgb(195, 2, 195) , 4px 4px 10px rgb(0, 217, 255), 4px 4px 30px rgb(171, 255, 75); 
+        display: flex; 
+        justify-content:center;
+        margin: 0%;
+        padding: 0%;
+        transition: text-shadow 2s; 
+        transition: font-size 1.1s;
+        }
+        
+        .back{
+            background-image: url(http://i.imgur.com/OalOoir.gif);
+            background-size:cover;
+            height: 100vh;        
+        }
