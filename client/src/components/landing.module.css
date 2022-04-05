@@ -24,7 +24,7 @@ A{
     }
     .link:hover{
        font-size: 170px;
-       text-shadow: 4px 4px 80px rgb(62, 249, 62), 4px 4px 10px rgb(0, 217, 255);
+       text-shadow: 4px 4px 80px rgb(62, 249, 62), 4px 4px 10px rgb(45, 241, 232);
     }
 
     .title{  
@@ -40,7 +40,9 @@ A{
         }
         
         .back{
-            background-image: url(http://i.imgur.com/OalOoir.gif);
+            background-image: url(https://cdnb.artstation.com/p/assets/images/images/023/595/983/original/ash-emritte-draft1.gif?1579716815);
             background-size:cover;
             height: 100vh;        
         }
+        /* http://i.imgur.com/OalOoir.gif */
+        /* https://priscilamarquezblog.files.wordpress.com/2017/11/g1.gif */

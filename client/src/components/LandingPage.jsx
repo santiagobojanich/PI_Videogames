@@ -10,7 +10,7 @@ export default function LandingPage(){
       </div>
         <div>
           <NavLink to='/home' className={land.link}> 
-          PLAY! 
+          READY
         </NavLink>
           </div>
     </div>

@@ -23,41 +23,75 @@
 .container{
     width: 20%;
     display:flex;
-    align-items: center;
+    align-items: center; 
     max-width: 1110px;
 }
 
 .card{
-    width: 100%;
+    width: 75%;
+    height: 370px;
     margin: 20px;
     border-radius: 20px;
     overflow: hidden;
-    /* background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
-            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
-            linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(0,0,255,0) 70.71%); */
-    background-image: url(https://priscilamarquezblog.files.wordpress.com/2017/11/g1.gif);
-            box-shadow: 0px 1px 10px rgba(0,0,0,0.9)
+    /* background: linear-gradient(217deg, rgb(32, 0, 215), rgba(248, 16, 202, 0.526) 80.71%);  */
+     background-image: url(https://priscilamarquezblog.files.wordpress.com/2017/11/g1.gif); 
+    
+    box-shadow: 0px 2px 20px rgba(0, 143, 48, 0.9),0px -2px 10px rgb(0, 110, 18);
+    
+
+    
 }
 
 .card img{
-    width: 95%;
-   border: inset 5px; 
+    width: 95%; 
+    border-radius: 200px;
+   max-height: 185px;
+   border:outset 5px; 
    border-radius: 150px;
-   border-color: green ;
+   border-color: rgb(0, 134, 7) rgb(0, 99, 16); 
+   /* display: flex; */
+   /* align-items: center;
+   background-size:auto;
+   background-position: center;
+   background-repeat: no-repeat; */
 }
 
 .card h2{
-     color: white;
-     text-shadow: 4px 4px 80px rgb(62, 249, 62), 4px 4px 10px rgb(24, 251, 69);
+     color: rgb(255, 255, 255);
+     text-shadow: 4px 4px 80px rgb(5, 255, 59), 4px 4px 10px rgb(0, 255, 64);
+     font-family: 'Courier New', Courier, monospace;
+     font-weight:bolder;
     }
 .card ul{
-    color: white;
-    text-shadow: 4px 4px 80px rgb(62, 249, 62), 4px 4px 10px rgb(26, 245, 18);
+    color: rgb(255, 255, 255);
+    text-shadow: 4px 4px 80px rgb(2, 202, 19), 4px 4px 10px rgb(0, 184, 0) ;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+
 }
 
 .back{
-    background:linear-gradient(0.25turn,rgb(0, 25, 3),rgb(1, 40, 5),rgb(0, 11, 1));
+    /* background-image: url(https://wallpapercave.com/uwp/uwp1497221.gif);
+    background-size: cover; */
+    background: linear-gradient(0.25turn, #011a00, #0c1d00, #000000);
+    background-repeat: no-repeat;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
+.buts{
+    display: flex;
+    align-items: flex-end;
+    height: 1vh;
+    color: green;
+    margin-top: 10px;
+} 
+
+/* https://priscilamarquezblog.files.wordpress.com/2017/11/g1.gif codigo binario */
+/* https://art.pixilart.com/3d0911d124136d9.gif mario corriendo */
+/* https://cdn.wallpapersafari.com/40/96/0vbRLX.gif pasiaje */
+/* https://frpnet.net/wp-content/uploads/2021/08/super-mario-bros-GIF.gif  hongo caminando*/
+/* https://art.pixilart.com/db9870070e6afe7.gif sol pixel */
+/* https://wallpapercave.com/uwp/uwp1497221.gif retro city*/
