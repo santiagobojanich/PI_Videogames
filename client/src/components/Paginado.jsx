@@ -10,7 +10,7 @@ export default function Paginado ({VideogamesPP,videogames,indicador}) {
        <nav>
            <ul>
            {pages && pages.map(page => (
-                   <button onClick={() => indicador(page)}> {page} </button>
+                   <button key={page}onClick={() => indicador(page)}> {page} </button>
            ))}
             </ul>
        </nav>

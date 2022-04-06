@@ -16,7 +16,8 @@ router.post('/', async function (req,res){
        plataforms: plataforms, 
        image: image,
       });
-      id = id + 1
+      id = id + 1 
+      
       let GendersDisp = await Gender.findAll({
         where: {name: genres}
       })
@@ -30,7 +31,6 @@ router.get('/:id', async function (req,res){
    if(id < 800000){ 
     let gameApi = await axios.get(`https://api.rawg.io/api/games/${id}?key=02338d92bdba49b4ad4d652a4a4d842e`)
     gameApi = gameApi.data
-   console.log(gameApi)
    let game2= {
          "name": gameApi.name,
          "image": gameApi.background_image,

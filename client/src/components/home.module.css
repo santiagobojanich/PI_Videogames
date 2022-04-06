@@ -21,20 +21,21 @@
 } */
 
 .container{
-    width: 20%;
+    width: 33%;
     display:flex;
     align-items: center; 
     max-width: 1110px;
 }
 
 .card{
-    width: 75%;
-    height: 370px;
+    width: 55%;
+    height: 390px;
     margin: 20px;
     border-radius: 20px;
     overflow: hidden;
     /* background: linear-gradient(217deg, rgb(32, 0, 215), rgba(248, 16, 202, 0.526) 80.71%);  */
      background-image: url(https://priscilamarquezblog.files.wordpress.com/2017/11/g1.gif); 
+     background-color: black;
     
     box-shadow: 0px 2px 20px rgba(0, 143, 48, 0.9),0px -2px 10px rgb(0, 110, 18);
     
@@ -45,7 +46,7 @@
 .card img{
     width: 95%; 
     border-radius: 200px;
-   max-height: 185px;
+   max-height: 180px;
    border:outset 5px; 
    border-radius: 150px;
    border-color: rgb(0, 134, 7) rgb(0, 99, 16); 
@@ -56,26 +57,30 @@
    background-repeat: no-repeat; */
 }
 
-.card h2{
+.name{
      color: rgb(255, 255, 255);
      text-shadow: 4px 4px 80px rgb(5, 255, 59), 4px 4px 10px rgb(0, 255, 64);
+     font-size: 33px;
      font-family: 'Courier New', Courier, monospace;
      font-weight:bolder;
+    display: flex;
+    justify-content: center;
     }
 .card ul{
     color: rgb(255, 255, 255);
     text-shadow: 4px 4px 80px rgb(2, 202, 19), 4px 4px 10px rgb(0, 184, 0) ;
-    font-size: 20px;
+    font-size: 25px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 700;
 
 }
 
 .back{
-    /* background-image: url(https://wallpapercave.com/uwp/uwp1497221.gif);
+     /* background-image: url(https://www.esportstips.nl/wp-content/uploads/2016/09/games.png);
     background-size: cover; */
-    background: linear-gradient(0.25turn, #011a00, #0c1d00, #000000);
-    background-repeat: no-repeat;
+    background: linear-gradient(0.25turn, #000a00, #050b00, #000000);
+    background-repeat: no-repeat; 
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
