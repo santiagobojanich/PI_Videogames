@@ -1,0 +1,70 @@
+
+
+
+.back{
+    background-color: #1c211cc9;
+    width: 80%;
+    margin-left: 10vh;
+    box-shadow: 0px 2px 30px rgba(255, 43, 237, 0.9),0px -2px 20px rgb(255, 32, 244);
+    border: solid 15px rgba(0, 0, 0, 0.088);
+    padding: 10px;
+}
+
+.link{
+   
+    background-color: red;
+}
+
+
+
+.background {
+      /* background-image: url(https://www.bentley.edu/sites/default/files/2021-06/shutterstock_1033328479_1440x720.jpg); */
+      /* background: linear-gradient(0.25turn, rgb(0, 0, 3), rgb(0, 29, 0),rgb(0, 13, 1)); */
+      background-image: url(https://mltywph9qgtd.i.optimole.com/cYHR7dA.19S9~4596b/w:auto/h:auto/q:75/https://lowellsfirstlook.com/wp-content/uploads/2021/12/retroelectric-12-2021-22.jpg);
+      background-size: contain;
+      height: 100vh;
+     
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-around;
+                
+    }
+
+
+.data{
+    color: white;
+    text-shadow: 4px 4px 6px rgb(207, 0, 162), 2px 2px 4px rgb(207, 0, 162); 
+    font-size: 40px
+}    
+
+.text{
+    color:  white;
+    font-size: 23px;
+    text-shadow: 4px 4px 6px black;
+}
+
+.rating{
+  color: white;
+  text-shadow: 2px 2px 6px rgb(235, 255, 19), 0px 0px 2px rgb(242, 255, 3); 
+  font-size: 30px;
+  
+}
+
+.genres{
+    color: rgb(255, 255, 255);
+    /* text-shadow: 2px 2px 6px rgb(2, 202, 19), 0px 0px 2px rgb(0, 184, 0); */
+    font-size: 25px;
+    text-shadow: 4px 4px 6px black;
+}
+
+.list{
+    color: rgb(255, 255, 255);
+    /* text-shadow: 2px 2px 6px rgb(2, 202, 19), 0px 0px 2px rgb(0, 184, 0); */
+    font-size: 5px;
+    text-shadow: 4px 4px 6px black;
+}
+
+
+
+
