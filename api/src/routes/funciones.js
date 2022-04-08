@@ -17,6 +17,7 @@ API : async function allGames (){
             name:  game.name,
             image: game.background_image,
             genres: game.genres.map(gen => gen.name),
+            rating: game.rating
             // description: game.description,
             // rating: game.rating,
             // platforms: game.platforms.map(plat => plat.platform.name)

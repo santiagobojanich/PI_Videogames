@@ -35,7 +35,8 @@ router.get('/', async function (req,res){
         return {
           name: game.name,
           image: game.background_image,
-          genres: game.genres.map(gen => gen.name)
+          genres: game.genres.map(gen => gen.name), 
+          rating: game.rating
         }
         
       }) 

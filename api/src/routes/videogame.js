@@ -4,7 +4,7 @@ const {Videogame,Gender} = require ('../db');
 const router = Router()
 const functions = require ('./funciones.js')
 
-let id = 800000
+let id = 800001
 router.post('/', async function (req,res){
    const {name,description,released,rating,plataforms,image,genres} = req.body
    let post = await Videogame.create({
@@ -16,7 +16,7 @@ router.post('/', async function (req,res){
        plataforms: plataforms, 
        image: image,
       });
-      id = id + 1 
+      ++id
       
       let GendersDisp = await Gender.findAll({
         where: {name: genres}

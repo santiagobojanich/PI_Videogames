@@ -22,14 +22,15 @@ export default function Detail() {
       </div> 
 
       <div className={detail.back}>
-        <div >
+        <div>
         <h1 className={detail.data}> {videogame.name} </h1>
         
         <p className={detail.text}> {videogame.description} </p>
         
         <span className={detail.rating}>Rating: {videogame.rating} </span>
         
-        <ul className={detail.genres}>
+        <ul className={detail.list}>
+          Platforms
           {videogame.platforms &&
             videogame.platforms.map((plat) => {
                 return <li key={plat}> {plat} </li>;

@@ -10,7 +10,7 @@ router.get('/', async function (req,res){
   let genresB = genresA.map(gen => gen.name)
   console.log(genresB)  
   genresB.forEach( async genre => {
-  await Gender.findOrCreate({
+  await Gender.findOrCreate({ 
   where: {name: genre}
   })
   })
