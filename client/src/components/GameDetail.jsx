@@ -23,25 +23,33 @@ export default function Detail() {
 
       <div className={detail.back}>
         <div>
-        <h1 className={detail.data}> {videogame.name} </h1>
         
-        <p className={detail.text}> {videogame.description} </p>
+        <h1 className={detail.data}> 
+        {videogame.name} 
+        </h1>
         
-        <span className={detail.rating}>Rating: {videogame.rating} </span>
+        <p className={detail.text}> 
+        {videogame.description} 
+        </p>
+        
+        <span className={detail.rating}>Rating: 
+        {videogame.rating} 
+        </span>
         
         <ul className={detail.list}>
           Platforms
-          {videogame.platforms &&
+           
+          { videogame.platforms &&
             videogame.platforms.map((plat) => {
                 return <li key={plat}> {plat} </li>;
-            })}
+            })}   
         </ul>
         <p className={detail.genres}>
           Genres: {"  "}
           {videogame.genres && videogame.genres.map((gen) => ` ${gen} ||`)}
         </p>
         </div>
-      </div>
+      </div> 
     </div>
   );
 }

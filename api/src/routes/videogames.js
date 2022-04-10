@@ -33,6 +33,7 @@ router.get('/', async function (req,res){
       api = api.data.results
       let result=  api.map(game=> {
         return {
+          id: game.id, 
           name: game.name,
           image: game.background_image,
           genres: game.genres.map(gen => gen.name), 

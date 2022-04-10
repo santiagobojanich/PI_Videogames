@@ -4,7 +4,7 @@ const {Videogame,Gender} = require ('../db');
 const router = Router()
 const functions = require ('./funciones.js')
 
-let id = 800001
+let id = 800000
 router.post('/', async function (req,res){
    const {name,description,released,rating,plataforms,image,genres} = req.body
    let post = await Videogame.create({
@@ -13,7 +13,7 @@ router.post('/', async function (req,res){
        description: description,
        released:released,
        rating: rating,
-       plataforms: plataforms, 
+       plataforms: plataforms || ['missing platforms'], 
        image: image,
       });
       ++id
@@ -53,9 +53,11 @@ router.get('/:id', async function (req,res){
         genres: game.genres,
         description: game.description,
         rating: game.rating,
+        platforms: game.plataform
       }
-    })
-    res.send(game3)
+    }) 
+    let game4 = game3[0]
+    res.send(game4)
   }
   })
       module.exports = router

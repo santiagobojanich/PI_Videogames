@@ -93,6 +93,10 @@
     color: green;
     margin-top: 10px;
 } 
+.not{
+    color: red; 
+    font-size: 200px;
+}
 
 /* https://priscilamarquezblog.files.wordpress.com/2017/11/g1.gif codigo binario */
 /* https://art.pixilart.com/3d0911d124136d9.gif mario corriendo */

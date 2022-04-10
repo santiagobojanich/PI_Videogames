@@ -78,14 +78,25 @@ function rootReducer(state=initialState, action) {
         }
         case 'FILTER_BY_GENRE': 
         const backGenre = state.backup
-        const resultGenre = backGenre &&backGenre.filter (gen => gen.genres.includes(action.payload)) 
+        const resultGenre = backGenre && backGenre.filter (gen => gen.genres.includes(action.payload)) 
         return {
             ...state,
             videogames: resultGenre, 
         }
+        case 'SEARCH_BY_NAME':
+          return {
+              ...state,
+              videogames: action.payload
+          }
+        
+        case 'POST_VIDEOGAME':
+            return {
+                ...state
+            }
         default: return state
     }
 }
+
 
 
 export default rootReducer

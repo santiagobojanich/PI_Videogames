@@ -6,11 +6,15 @@ import { Getvideogames,filterByLetter, createdOrApi, getGenres, filterByGenre } 
 import Card from "./Card";
 import home from './home.module.css'
 import Paginado from "./Paginado";
+import SearchBar from "./SearchBar";
+import Loadscreen from "./Loadscreen";
+
 
 export default function HomeVideogames() {
     const dispatch = useDispatch() // para no tener que usar mapDispatchToprops
     const videogames = useSelector(state => state.videogames) // uso hook de mapStateToprops
     const genres = useSelector(state => state.genres)
+    const [loading, setloading] = useState(true)
     //--------------------------------------------------------------------------------------------- paginado
     const [ActualPage, SetActualPage] = useState(1)
     const [VideogamesPP, SetVideogamesPP] = useState(15)
@@ -24,7 +28,7 @@ export default function HomeVideogames() {
     //-------------------------------------------------------------------------------------------------
 
     useEffect(() => {                        //voy a usar useEffect para que me muestre cuando el componente se monte, sino en un refresh se me rompe toda la pagina
-        dispatch(Getvideogames())
+        dispatch(Getvideogames()).then(()=> setloading(false))
         dispatch(getGenres())
     },[dispatch])
 
@@ -44,7 +48,7 @@ export default function HomeVideogames() {
         setOrder('order' + e.target.value)
     }
     
-    
+    if(loading) return <Loadscreen/>
     return (
         <div className={home.back}>
             <div className={home.buts}>
@@ -52,6 +56,10 @@ export default function HomeVideogames() {
                 <NavLink to='/videogame' className={home.buts}> CREATE VIDEOGAME </NavLink>
                 <NavLink to='/' className={home.buts}> VOLVER </NavLink>
             </div>
+            <div>
+                <SearchBar/>
+            </div>
+            
             <div>
            
            <select onChange={(e) => handleFilterByLeter(e)}>
@@ -73,21 +81,18 @@ export default function HomeVideogames() {
           <select onChange={(e) => handleFilterByGenre(e)}> 
               {genres && genres.map(gen =>{
                   return (
-                      <option value={gen.name}> {gen.name} </option>
+                      <option key={gen.name} value={gen.name}> {gen.name} </option>
                   )
               })}
           </select>
-            
-    
-            
             </div>
 
 
             <div>
                 <Paginado VideogamesPP={VideogamesPP} videogames={videogames.length} indicador={indicador} />
             </div>
-
-            {ActualVideogames && ActualVideogames.map(game => {
+            { ActualVideogames.length === 0 ? <div className={home.not}> Not Found </div> :
+             ActualVideogames.map(game => {
                 return (
                     <div key={game.name} className={home.container}>
                         <Card

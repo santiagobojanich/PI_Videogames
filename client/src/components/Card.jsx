@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useParams } from "react-router-dom";
 import homeS from './home.module.css' 
-import Getvideogame from '../actions'
+
 export default function Card ({id,name,image,genres}){
 
   return (

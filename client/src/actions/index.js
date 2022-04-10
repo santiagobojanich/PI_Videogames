@@ -38,3 +38,23 @@ export function getGenres () {
 export function filterByGenre (payload) {
   return ({type:'FILTER_BY_GENRE', payload})
 }
+
+export function SearchByName (name) {
+  try{
+
+    return async function (dispatch) {
+      let response = await axios.get (`http://localhost:3001/videogames?name=${name}`)
+      return dispatch({type: 'SEARCH_BY_NAME', payload:response.data  })
+    }
+  }
+catch(e){
+  console.log(e)
+}  
+}
+
+export function postVideogame (payload) {
+  return async function (dispatch) {
+    let response = await axios.post('http://localhost:3001/videogame',payload)
+    return response
+  }
+}

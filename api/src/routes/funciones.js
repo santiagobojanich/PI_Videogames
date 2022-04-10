@@ -33,7 +33,7 @@ API : async function allGames (){
             attributes:['name'],
             throug: {
                 attributes: [],
-            }
+            } 
           }
     })
      let DefAllDB = allDB.map((game) => {
@@ -44,6 +44,7 @@ API : async function allGames (){
            genres: game.Genders.map(gen => gen.name), 
            description: game.description,
            rating: game.rating,
+           plataform: game.plataforms || 'missing plataform' 
           }
      })
 
