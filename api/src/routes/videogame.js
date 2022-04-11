@@ -7,6 +7,11 @@ const functions = require ('./funciones.js')
 let id = 800000
 router.post('/', async function (req,res){
    const {name,description,released,rating,plataforms,image,genres} = req.body
+   
+   if(!name || !description || !released || !plataforms.length){
+    return res.status(400).send('Campo faltante')
+   } 
+   
    let post = await Videogame.create({
        id: id ,
        name: name,

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postVideogame, getGenres } from "../actions";
+import { postVideogame, getGenres, Getvideogames } from "../actions";
+import create from './create.module.css'
+import NavDetail from "./NavDetail";
 
 export default function Create() {
   const dispatch = useDispatch();
@@ -11,11 +13,43 @@ export default function Create() {
     rating: 0,
     plataforms: [],
     image: "",
-    genres: [],
+    genres: [], 
   });
   const Genres = useSelector((state) => state.genres);
+  const [Errors, setErrors] = useState({})
+  const videogames = useSelector (state => state.videogames)
+ 
+  function validate(input) {
+    let errors={}
+    if(input.name[0] === ' '){
+    errors.name ='Should not have space behind '
+  }
+  else  if (!input.name){
+    errors.name= 'Missing name'
+  } else if(videogames.filter(game => game.name === input.name).length > 0 ){
+   errors.name = 'Name already exist'
+  }
+  if(input.description[0] === ' '){
+    errors.description ='Should not have space behind '
+  } else if(!input.description) {
+    errors.description = 'Missing description'
+  }
+  
+  if(!input.released){
+    errors.released = 'Missing Date'
+  }
+  else if(!/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(input.released)){
+   errors.released = 'Wrong format. Example: XX-XX-XXXX'
+  }
+  
+  if(input.rating < 0 || input.rating > 5) {
+    errors.rating = 'Rating must be between 0 and 5'
+  }
+  return errors   
+}
 
   useEffect(() => {
+    dispatch(Getvideogames())
     dispatch(getGenres());
   }, []);
 
@@ -24,6 +58,9 @@ export default function Create() {
      ...input,
     [e.target.name] : e.target.value
     });
+    setErrors(validate({
+      ...input,
+      [e.target.name] : e.target.value}))
   }
 
   function handleSelect (e) {
@@ -40,7 +77,6 @@ export default function Create() {
   }
   function handleSubmit (e){
       e.preventDefault()
-      console.log(input)
       dispatch(postVideogame(input))
       setinput({name: "",
       description: "",
@@ -55,36 +91,45 @@ export default function Create() {
     
     
   return (
-    <div>
+    <div className={create.background}>
+     <div>
+       <NavDetail />
+     </div>
+     
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
+        <div className={create.back}>
           <div>
             <label>Name:</label>
             <input
+              className={create.inputName}
               type="text"
               value={input.name}
               name="name"
               placeholder="Insert name..."
               onChange={(e) => handleInput(e)}
             />
+            {Errors.name && ( <p> {Errors.name} </p>)}
           </div>
           <div>
             <label>
             Description:
             </label>
             <input
+              className={create.inputDescription}
               value={input.description}
               type="text"
               name="description"
               placeholder="Insert description..."
               onChange={(e) => handleInput(e)}
            />
+          {Errors.description && ( <p> {Errors.description} </p>)}
           </div>
           <div>
             <label>
              Released:
             </label>
             <input
+              className={create.inputReleased}
               value={input.released}
               type="text"
               name="released"
@@ -92,11 +137,13 @@ export default function Create() {
               onChange={(e) => handleInput(e)}
             />
           </div>
-          <div>
+          {Errors.released && (<p> {Errors.released} </p>)}
+          <div> 
            <label>
             Rating:
             </label> 
             <input
+              className={create.inputRating}
               value={input.rating}
               type="number"
               name="rating"
@@ -106,6 +153,7 @@ export default function Create() {
               placeholder="Insert rating..."
               onChange={(e) => handleInput(e)}
             />
+            {Errors.rating && (<p> {Errors.rating} </p>)}
           </div>
          
           <div>
@@ -113,6 +161,7 @@ export default function Create() {
             Image:
             </label>
             <input
+              className={create.inputImage}
               value={input.image}
               name="image"
               type="text"
@@ -151,7 +200,7 @@ export default function Create() {
           </div>
         </div>
         <div>
-        <ul> <li> {input.genres && input.genres.map(gen => gen + ' ,')} </li> </ul>
+        <ul> <li> {input.genres && input.genres.map(gen => gen + '||')} </li> </ul>
         </div>
         <div>
           <button type="submit"> Create </button>

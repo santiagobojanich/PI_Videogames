@@ -8,6 +8,7 @@ import home from './home.module.css'
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
 import Loadscreen from "./Loadscreen";
+import Nav from "./nav";
 
 
 export default function HomeVideogames() {
@@ -42,27 +43,29 @@ export default function HomeVideogames() {
     function handleFilterByOrigin(e){
         dispatch(createdOrApi(e.target.value))
         setOrder('order' + e.target.value)
+        SetActualPage(1)
     }
     function handleFilterByGenre(e) {
         dispatch(filterByGenre(e.target.value))
         setOrder('order' + e.target.value)
+        SetActualPage(1)
     }
     
     if(loading) return <Loadscreen/>
     return (
         <div className={home.back}>
-            <div className={home.buts}>
-               
-                <NavLink to='/videogame' className={home.buts}> CREATE VIDEOGAME </NavLink>
-                <NavLink to='/' className={home.buts}> VOLVER </NavLink>
-            </div>
+             <div>
+               <Nav/>
+            </div>          
+           
             <div>
                 <SearchBar/>
             </div>
             
-            <div>
-           
-           <select onChange={(e) => handleFilterByLeter(e)}>
+            
+           <div className={home.filters}>
+           <select className={home.filterS} onChange={(e) => handleFilterByLeter(e)}>
+               <option> Order By </option>
                <optgroup label="Alfabetic Order">
                <option value='A-Z'> A-Z </option>
                <option value='Z-A'> Z-A </option>
@@ -73,28 +76,33 @@ export default function HomeVideogames() {
               </optgroup>
            </select>
            
-           <select onChange={(e) => handleFilterByOrigin(e)}>   
+           <select className={home.filterS} onChange={(e) => handleFilterByOrigin(e)}>   
+               <option>Origin</option>
                <option value='Created'> Created </option>
                <option value='Api'> API </option>
            </select>
           
-          <select onChange={(e) => handleFilterByGenre(e)}> 
+          <select className={home.filterS} onChange={(e) => handleFilterByGenre(e)}> 
+              <option> Genres </option>
               {genres && genres.map(gen =>{
                   return (
                       <option key={gen.name} value={gen.name}> {gen.name} </option>
                   )
               })}
           </select>
+            
             </div>
 
 
-            <div>
+            <div className={home.pagPosition}>
                 <Paginado VideogamesPP={VideogamesPP} videogames={videogames.length} indicador={indicador} />
             </div>
-            { ActualVideogames.length === 0 ? <div className={home.not}> Not Found </div> :
+            
+            <div className={home.container}>
+            { ActualVideogames.length === 0 ? <div className={home.not}> We don't have games of this Genre. ADD ONE!  </div> :
              ActualVideogames.map(game => {
-                return (
-                    <div key={game.name} className={home.container}>
+                 return (
+                     <div key={game.name}>
                         <Card
                             id={game.id}
                             key={game.name}
@@ -104,6 +112,7 @@ export default function HomeVideogames() {
                     </div>
                 )
             })}
+             </div>
 
         </div>
     )

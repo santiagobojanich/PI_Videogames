@@ -4,7 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getvideogame } from "../actions";
 import detail from "./detail.module.css";
-
+import NavDetail from "./NavDetail";
 export default function Detail() {
   const videogame = useSelector((state) => state.videogame);
   const dispatch = useDispatch();
@@ -17,9 +17,9 @@ export default function Detail() {
   return (
     <div className={detail.background}>
       
-      <div className={detail.link}>
-        <NavLink to="/home"> BACK </NavLink>
-      </div> 
+       <div>
+        <NavDetail/>      
+        </div> 
 
       <div className={detail.back}>
         <div>
@@ -27,7 +27,7 @@ export default function Detail() {
         <h1 className={detail.data}> 
         {videogame.name} 
         </h1>
-        
+         
         <p className={detail.text}> 
         {videogame.description} 
         </p>

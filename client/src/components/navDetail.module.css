@@ -1,0 +1,46 @@
+.image{
+    height: 90px;
+    width: 90px;
+    margin-right: 35vw;
+    
+}
+
+.container{
+    width: 100vw;
+    height: 8vh;
+    background-color: rgba(0, 0, 0, 0.932);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.create{
+  text-decoration: none;
+  display: flex;
+  margin-right: 2vw;
+  margin-left: 1vw; 
+ font-size: 27px;
+ color: white;
+ text-shadow: 4px 4px 20px rgb(255, 46, 255) , 4px 4px 30px rgb(34, 255, 244), 4px 4px 30px rgb(255, 27, 236);
+}
+ 
+.volver{
+    text-decoration: none;
+    margin-right: 40vw;
+    font-size: 30px;
+    color: white;
+    text-shadow: 4px 4px 20px rgb(255, 46, 255) , 4px 4px 30px rgb(34, 255, 244), 4px 4px 30px rgb(255, 27, 236); 
+}
+
+.home{
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+     text-shadow: 4px 4px 20px rgb(255, 46, 255) , 4px 4px 30px rgb(34, 255, 244), 4px 4px 30px rgb(255, 27, 236);   
+}
+ 
+
+
+A{
+    text-decoration: none;
+}

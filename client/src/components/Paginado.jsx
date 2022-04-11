@@ -1,4 +1,6 @@
 import React from 'react'
+import pag from './home.module.css'
+
 
 export default function Paginado ({VideogamesPP,videogames,indicador}) {
     const pages = []
@@ -10,7 +12,7 @@ export default function Paginado ({VideogamesPP,videogames,indicador}) {
        <nav>
            <ul>
            {pages && pages.map(page => (
-                   <button key={page}onClick={() => indicador(page)}> {page} </button>
+                   <button className={pag.pagBut} key={page}onClick={() => indicador(page)}> {page} </button>
            ))}
             </ul>
        </nav>

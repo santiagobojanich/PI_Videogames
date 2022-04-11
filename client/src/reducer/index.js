@@ -30,7 +30,7 @@ function rootReducer(state=initialState, action) {
     
         case 'filter_by_letter' : 
         const vidBackup = state.backup
-       const ordered = action.payload === 'A-Z' ? vidBackup && vidBackup.sort(function (a,b) {
+       const ordered =  action.payload === 'A-Z' ? vidBackup && vidBackup.sort(function (a,b) {
            if (a.name.toLowerCase() > b.name.toLowerCase()) {
                return 1
             }
@@ -54,7 +54,7 @@ function rootReducer(state=initialState, action) {
                 return 1
             }
             return 0 
-        }): vidBackup  &&  vidBackup.sort(function (a,b) {
+        }):  vidBackup  &&  vidBackup.sort(function (a,b) {
             if (a.rating > b.rating) {
                 return 1
             }
@@ -62,7 +62,7 @@ function rootReducer(state=initialState, action) {
                 return -1 
             }
             return 0    
-        })
+        }) 
         
         return {
             ...state,
