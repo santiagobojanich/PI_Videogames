@@ -13,7 +13,12 @@ export default function Detail() {
   useEffect(() => {
     dispatch(getvideogame(id));
   }, [dispatch, id]);
-
+  if(!videogame) {
+    return (
+      <p> 'Game not Found'</p>
+    )
+  }
+ 
   return (
     <div className={detail.background}>
       
@@ -27,7 +32,7 @@ export default function Detail() {
         <h1 className={detail.data}> 
         {videogame.name} 
         </h1>
-         
+        
         <p className={detail.text}> 
         {videogame.description} 
         </p>

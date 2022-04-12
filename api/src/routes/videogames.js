@@ -63,7 +63,19 @@ catch(e){
     res.status(404).send(e)
 }})
 
-    
+router.delete ('/:id', async function (req,res){
+  let {id} = req.params
+  try{
+     await Videogame.destroy({where:{id: id.toString()}}) 
+     res.send('deleted')
+    }
+  catch(e){
+    console.log(e)
+  }
+})
+
+
+// asdasdasdasasd router.put({name:'asdo'},where:{id: id}}) 
 
 
 module.exports = router;

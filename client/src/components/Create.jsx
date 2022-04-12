@@ -71,6 +71,8 @@ export default function Create() {
   }
 
   function handleSelect(e) {
+    const IndexGen = input.genres.indexOf(e.target.value)
+    if (IndexGen === -1){
     setinput({
       ...input,
       genres: [...input.genres, e.target.value]
@@ -80,8 +82,11 @@ export default function Create() {
       [e.target.name]: e.target.value
     }
     ))
-  }
+  }}
+  
   function handlePlat(e) {
+    const currentIndex = input.plataforms.indexOf(e.target.value)
+    if (currentIndex === -1){
     setinput({
       ...input,
       plataforms: [...input.plataforms, e.target.value]
@@ -91,7 +96,8 @@ export default function Create() {
       [e.target.name]: e.target.value
     }
     ))
-  }
+  }}
+  
   function handleSubmit(e) {
     e.preventDefault()
     dispatch(postVideogame(input))
@@ -126,7 +132,7 @@ export default function Create() {
         <NavDetail />
       </div>
 
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form autoComplete="off" onSubmit={(e) => handleSubmit(e)}>
         <div className={create.back}>
           <div>
             <label className={create.label}>Name:</label>
@@ -203,7 +209,7 @@ export default function Create() {
             <label className={create.label}>
               Platforms:
             </label>
-            <select onChange={(e) => handlePlat(e)}>
+            <select value={input.plataforms} onChange={(e) => handlePlat(e)}>
               <option value='PC'> PC </option>
               <option value='Linux'> Linux </option>
               <option value='macOS'> macOS </option>
@@ -221,7 +227,7 @@ export default function Create() {
             <label className={create.label}>
               Genres:
             </label>
-            <select onChange={(e) => handleSelect(e)}>
+            <select value={input.genres} onChange={(e) => handleSelect(e)}>
               {Genres && Genres.map(gen => {
                 return (
                   <option key={gen.name} value={gen.name}> {gen.name} </option>

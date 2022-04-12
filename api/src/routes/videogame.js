@@ -46,8 +46,7 @@ router.get('/:id', async function (req,res){
      }
      //console.log(game2)
      res.send(game2)
-    }  
-  if (id >= 800000){
+    }  else if (id >= 800000){
     let gameDB = await functions.DB()
     console.log(gameDB)
     let game2 = gameDB.filter(game => game.id == id)
@@ -63,6 +62,8 @@ router.get('/:id', async function (req,res){
     }) 
     let game4 = game3[0]
     res.send(game4)
+  } else{
+    res.send(null)
   }
   })
       module.exports = router

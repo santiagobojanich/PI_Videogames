@@ -69,6 +69,8 @@ function rootReducer(state=initialState, action) {
             ...state,
             videogames: ordered,
         }
+        
+        
         case 'CREATED_OR_API': 
         const Backup = state.backup 
         const result = action.payload ==='Created'? Backup && Backup.filter(game => game.id >= 800000) : 
