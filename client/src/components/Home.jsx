@@ -26,6 +26,7 @@ export default function HomeVideogames() {
     const indicador = (number) => {
         SetActualPage(number)
     }
+   
     //-------------------------------------------------------------------------------------------------
 
     useEffect(() => {                        //voy a usar useEffect para que me muestre cuando el componente se monte, sino en un refresh se me rompe toda la pagina
@@ -38,6 +39,7 @@ export default function HomeVideogames() {
     function handleFilterByLeter(e){
       dispatch(filterByLetter(e.target.value))
       setOrder('order' + e.target.value)
+      SetActualPage(1)
     }   
     
     function handleFilterByOrigin(e){
@@ -65,7 +67,7 @@ export default function HomeVideogames() {
             
            <div className={home.filters}>
            <select className={home.filterS} onChange={(e) => handleFilterByLeter(e)}>
-               <option> Order By </option>
+               <option value='ALL'>Order By</option>
                <optgroup label="Alfabetic Order">
                <option value='A-Z'> A-Z </option>
                <option value='Z-A'> Z-A </option>
@@ -97,9 +99,12 @@ export default function HomeVideogames() {
             <div className={home.pagPosition}>
                 <Paginado VideogamesPP={VideogamesPP} videogames={videogames.length} indicador={indicador} />
             </div>
+            <div>
+            <h1 className={home.pageNumb}> PAGE: {ActualPage} </h1>
+            </div> 
             
             <div className={home.container}>
-            { ActualVideogames.length === 0 ? <div className={home.not}> We don't have games of this Genre. ADD ONE!  </div> :
+            { ActualVideogames.length === 0 ? <div className={home.not}> We don't have games of this type. ADD ONE!  </div> :
              ActualVideogames.map(game => {
                  return (
                      <div key={game.name}>

@@ -22,7 +22,9 @@ export default function Nav() {
             <div >
                 <NavLink className={nav.volver} to='/'> BACK </NavLink>
             </div>
-
+             <div>
+                <button className={nav.but} onClick={() => window.location.reload()}> Reset Games </button>
+             </div>
 
         </div>
     )
