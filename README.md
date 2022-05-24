@@ -8,15 +8,22 @@
   <img height="200" src="./videogame.png" />
 </p>
 
-## Objetivos del Proyecto
+💻Desarrollo de una SPA de manera individual, cumpliendo rol full stack. 
+La misma trae datos desde una API de mas de 750.000 videojuegos (Raw.io) asi como tambien permite la insercion de videojuegos nuevos en nuestra base de datos. 
 
-- Construir una App utlizando React, Redux, Node y Sequelize.
-- Afirmar y conectar los conceptos aprendidos en la carrera.
-- Aprender mejores prácticas.
-- Aprender y practicar el workflow de GIT.
-- Usar y practicar testing.
+💡 Entre algunas de sus funcionalidades se encuntran: 
+➤ Ordenar alfabéticamente (A-Z y Z-A) y por rating (de mayor a menor y de menor a mayor) ,
+➤ Crear nuevos videojuegos mediante un formulario controlado por javascript y html,
+➤ Filtrar por Genero y por Origen (traidos desde la API externa o creados y guardados en la base de datos)
+➤ Barra de busqueda por nombre,
+➤ Detalle completo de cada videojuego,
+➤ Eliminar Videojuego creado
 
-
+#### Tecnologías Utilizadas:
+- [ ] React
+- [ ] Redux
+- [ ] Express
+- [ ] Sequelize - Postgres
 
 ## FAST START
 
@@ -58,11 +65,7 @@ El contenido de `client` fue creado usando: Create React App.
 __IMPORTANTE__: Para poder utilizar esta API externa es necesario crearse una cuenta para obtener una API Key que luego debera ser incluida en todos los request que hagamos a rawg simplemente agregando `?key={YOUR_API_KEY}` al final de cada endpoint. Agregar la clave en el archivo `.env` para que la misma no se suba al repositorio por cuestiones de seguridad y utilizarla desde allí.
 
 
-#### Tecnologías Utilizadas:
-- [ ] React
-- [ ] Redux
-- [ ] Express
-- [ ] Sequelize - Postgres
+
 
 #### Frontend
 
